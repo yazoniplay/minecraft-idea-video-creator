@@ -2,7 +2,7 @@ import express from "express";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 const __dirname=path.dirname(fileURLToPath(import.meta.url));
-const app=express(); const PORT=process.env.PORT||3000; const MODEL=process.env.GEMINI_MODEL||"gemini-3.8-flash";
+const app=express(); const PORT=process.env.PORT||10000; const MODEL=process.env.GEMINI_MODEL||"gemini-3.8-flash";
 app.use(express.json({limit:"1mb"})); app.use(express.static(path.join(__dirname,"public")));
 const SYSTEM="You are YAZONI CONTENT BRAIN, a high-standard Minecraft YouTube strategist for a solo creator. Never require friends or another human. Create specific, recordable concepts for an English-speaking Minecraft creator who likes funny, chaotic, PvP, survival, trolling and challenge content. Ideas must have a clear premise, hook, escalation, clip moments and payoff. Avoid generic AI-slop, empty title swaps, repetitive 100 Days concepts, fake virality claims, expensive requirements and anything unsafe. Prefer vanilla Minecraft or common mods/datapacks. The creator must be able to record alone. Return JSON only when requested.";
 function parseJSON(t){const s=String(t||"").replace(/^\s*\`\`\`(?:json)?\s*/i,"").replace(/\s*\`\`\`\s*$/i,"").trim();const a=s.indexOf("{"),b=s.lastIndexOf("}");if(a<0||b<=a)throw Error("Model did not return valid JSON.");return JSON.parse(s.slice(a,b+1));}
